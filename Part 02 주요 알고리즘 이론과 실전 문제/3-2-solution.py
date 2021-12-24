@@ -6,39 +6,17 @@
 n, m, k = map(int, input().split())
 # N개의 수를 공백으로 구분하여 입력받기
 data = list(map(int, input().split()))
-# 결과
-result = 0
-# 더하는 숫자를 세기 위한 변수
-count = 0
-# 제일 큰 수 True 두번째 큰 수 False
-IsMax = True
 
 data.sort()  # 입력받은 수들 정렬하기
-big = data[-1]  # 첫번째로 큰 수
-secondbig = data[-2]  # 두번째로 큰 수
+first = data[-1]  # 첫번째로 큰 수
+second = data[-2]  # 두번째로 큰 수
 
-# k만큼씩 더하면서 총 m번을 더해야 함
-# 더하는 수는 첫번째로 큰 수 big, 두번째로 큰 수 secondbig만 있으면 됨
-# 첫 번째 큰 수와 두 번재 큰 수를 번갈아가면서 k번씩 더하되, m번의 횟수가 채워지면 그만하도록
+# 가장 큰 수가 더해지는 횟수 계산
+count = int(m / (k+1)) * k
+count += m % (k + 1)
 
+result = 0
+result += (count) * first # 가장 큰 수 더하기
+result += (m-count) * second # 두 번째로 큰 수 더하기
 
-while m > 0:
-    if m > k:
-        if IsMax:
-            result += big * k
-            m -= k
-            IsMax = False
-        elif not IsMax:
-            result += secondbig
-            m -= 1
-            IsMax = True
-    else:
-        if IsMax:
-            result += big * m
-            m = 0
-        elif not IsMax:
-            result += secondbig
-            result += big * (m-1)
-            m = 0
-
-print(result)
+print(result) # 최종 답안 출력
