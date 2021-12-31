@@ -1,4 +1,4 @@
-# 구현 - 게임 개발 
+# 구현 - 게임 개발
 
 n, m = map(int, input().split())
 
