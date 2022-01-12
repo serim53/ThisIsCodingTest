@@ -17,4 +17,3 @@ if sumLeft == sumRight:
     print("LUCKY")
 else:
     print("READY")
-    
